@@ -14,7 +14,7 @@ import org.mockito.Mockito.verify
 import org.mockito.Mockito.verifyNoMoreInteractions
 import org.mockito.junit.MockitoJUnit
 
-class GetPokemonInteractorImplTest {
+class PokemonInteractorImplTest {
 
     @Rule @JvmField var mockitoRule = MockitoJUnit.rule()
 
@@ -40,7 +40,7 @@ class GetPokemonInteractorImplTest {
     fun onRequestPokemon_shouldLaunchGetPokemonJob() {
         underTest.requestPokemon()
 
-        verify(jobManager).addJob(jobCaptor.capture())
+        verify(jobManager).addJobInBackground(jobCaptor.capture())
         assertTrue(jobCaptor.value is GetPokemonJob)
         assertEquals(1, jobCaptor.value.params?.priority)
         assertTrue(jobCaptor.value.params?.isNetworkRequired!!)

@@ -11,6 +11,6 @@ class PokemonInteractorImpl(val jobManager: JobManager,
 
     override fun requestPokemon() {
         val params = Params(1).requireNetwork()
-        jobManager.addJob(GetPokemonJob(params, repository, bus))
+        jobManager.addJobInBackground(GetPokemonJob(params, repository, bus))
     }
 }

@@ -46,7 +46,7 @@ class GetPokemonJobTest {
 
         verify(bus).postSticky(finishedEventCaptor.capture())
         assertTrue(finishedEventCaptor.value.success)
-        assertEquals(finishedEventCaptor.value.pokemons, list)
+        assertEquals(finishedEventCaptor.value.pokemon, list)
 
         verify(repository).getPokemon()
         verifyNoMoreInteractions(repository, bus)

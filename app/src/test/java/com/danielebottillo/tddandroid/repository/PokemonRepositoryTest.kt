@@ -1,8 +1,8 @@
 package com.danielebottillo.tddandroid.repository
 
 import com.danielebottillo.tddandroid.network.PokemonService
-import com.danielebottillo.tddandroid.network.response.PokemonResponse
 import com.danielebottillo.tddandroid.network.response.ListPokemonResponse
+import com.danielebottillo.tddandroid.network.response.PokemonResponse
 import junit.framework.Assert.assertEquals
 import junit.framework.Assert.assertNotNull
 import org.junit.Before

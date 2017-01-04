@@ -10,21 +10,20 @@ import org.greenrobot.eventbus.EventBus
 class GetPokemonJob(val params: Params?, val repository: PokemonRepository, val bus: EventBus) : Job(params) {
 
     override fun shouldReRunOnThrowable(throwable: Throwable, runCount: Int, maxRunCount: Int): RetryConstraint {
-        throw UnsupportedOperationException("not implemented") //To change body of created functions use File | Settings | File Templates.
+        return RetryConstraint(false)
     }
 
     override fun onAdded() {
-        throw UnsupportedOperationException("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
     override fun onCancel(cancelReason: Int, throwable: Throwable?) {
-        throw UnsupportedOperationException("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
     override fun onRun() {
-        bus.postSticky(FinishedEvent(true, repository.getPokemon()))
+        val pokemon = repository.getPokemon()
+        bus.postSticky(FinishedEvent(true, pokemon))
     }
 
-    class FinishedEvent(var success:Boolean, var pokemons:List<Pokemon>)
+    open class FinishedEvent(val success: Boolean, open val pokemon: List<Pokemon>)
 
 }
