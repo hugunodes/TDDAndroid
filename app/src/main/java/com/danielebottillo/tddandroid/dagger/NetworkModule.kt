@@ -1,5 +1,7 @@
 package com.danielebottillo.tddandroid.dagger
 
+import com.danielebottillo.tddandroid.network.PokemonRestClient
+import com.danielebottillo.tddandroid.network.PokemonRestClientImpl
 import com.danielebottillo.tddandroid.network.PokemonService
 import dagger.Module
 import dagger.Provides
@@ -14,7 +16,13 @@ class NetworkModule {
 
     @Provides
     @Singleton
-    fun providesRestClient(client: OkHttpClient): PokemonService {
+    fun providesPokemonRestClient(service: PokemonService): PokemonRestClient {
+        return PokemonRestClientImpl(service)
+    }
+
+    @Provides
+    @Singleton
+    fun providesPokemonService(client: OkHttpClient): PokemonService {
         val retrofit = Retrofit.Builder()
                 .client(client)
                 .baseUrl("http://pokeapi.co/")

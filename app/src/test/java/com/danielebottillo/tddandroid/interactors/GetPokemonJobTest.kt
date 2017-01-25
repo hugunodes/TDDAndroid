@@ -31,8 +31,8 @@ class GetPokemonJobTest {
     @Mock
     lateinit var repository: PokemonRepository
 
-    var finishedEventCaptor: ArgumentCaptor<GetPokemonJob.FinishedEvent> = ArgumentCaptor.forClass(GetPokemonJob.FinishedEvent::class.java)
-    var list = arrayListOf(Pokemon("Squirtle"), Pokemon("Bulbasaur"))
+    val finishedEventCaptor: ArgumentCaptor<GetPokemonJob.FinishedEvent> = ArgumentCaptor.forClass(GetPokemonJob.FinishedEvent::class.java)
+    val list = arrayListOf(Pokemon("Squirtle"), Pokemon("Bulbasaur"))
 
     @Before
     fun setUp() {
@@ -41,7 +41,7 @@ class GetPokemonJobTest {
     }
 
     @Test
-    fun onRun_shouldCallRepository_andPostEventOnBus() {
+    fun `shouldCallRepository_andPostEventOnBus`() {
         underTest.onRun()
 
         verify(bus).postSticky(finishedEventCaptor.capture())

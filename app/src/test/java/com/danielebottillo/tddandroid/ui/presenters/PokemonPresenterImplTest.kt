@@ -36,12 +36,13 @@ class PokemonPresenterImplTest {
 
     @Before
     fun setUp() {
+        Mockito.`when`(event.pokemon).thenReturn(list)
         underTest = PokemonPresenterImpl(interactor, bus)
         underTest.init(view)
     }
 
     @Test
-    fun onStart_shouldRequestPokemon() {
+    fun `shouldRequestPokemon`() {
         underTest.onStart()
 
         verify(interactor).requestPokemon()
@@ -50,12 +51,12 @@ class PokemonPresenterImplTest {
     }
 
     @Test
-    fun onPokemonRetrieved_shouldShowPokemon_andRemoveEventFromBus() {
-        Mockito.`when`(event.pokemon).thenReturn(list)
+    fun `shouldShowPokemon_andRemoveEventFromBus`() {
         underTest.onPokemonRetrieved(event)
 
         verify(view).hideLoading()
         verify(view).pokemonLoaded(event.pokemon)
         verify(bus).removeStickyEvent(event)
+        verifyNoMoreInteractions(bus, view)
     }
 }

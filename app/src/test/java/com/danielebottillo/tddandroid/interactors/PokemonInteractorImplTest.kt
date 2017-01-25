@@ -37,7 +37,7 @@ class PokemonInteractorImplTest {
     }
 
     @Test
-    fun onRequestPokemon_shouldLaunchGetPokemonJob() {
+    fun `shouldLaunchGetPokemonJob`() {
         underTest.requestPokemon()
 
         verify(jobManager).addJobInBackground(jobCaptor.capture())
