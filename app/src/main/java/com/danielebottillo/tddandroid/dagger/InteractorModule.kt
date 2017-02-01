@@ -3,9 +3,6 @@ package com.danielebottillo.tddandroid.dagger
 import android.content.Context
 import com.birbit.android.jobqueue.JobManager
 import com.birbit.android.jobqueue.config.Configuration
-import com.danielebottillo.tddandroid.interactors.JobLogger
-import com.danielebottillo.tddandroid.interactors.PokemonInteractor
-import com.danielebottillo.tddandroid.interactors.PokemonInteractorImpl
 import com.danielebottillo.tddandroid.repository.PokemonRepository
 import dagger.Module
 import dagger.Provides

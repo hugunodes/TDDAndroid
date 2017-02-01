@@ -1,8 +1,5 @@
 package com.danielebottillo.tddandroid.dagger
 
-import com.danielebottillo.tddandroid.interactors.PokemonInteractor
-import com.danielebottillo.tddandroid.ui.presenters.PokemonPresenter
-import com.danielebottillo.tddandroid.ui.presenters.PokemonPresenterImpl
 import dagger.Module
 import dagger.Provides
 import org.greenrobot.eventbus.EventBus

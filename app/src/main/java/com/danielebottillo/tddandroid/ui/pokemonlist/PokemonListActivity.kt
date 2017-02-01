@@ -10,7 +10,6 @@ import com.danielebottillo.tddandroid.PokemonApp
 import com.danielebottillo.tddandroid.R
 import com.danielebottillo.tddandroid.dagger.DaggerUIComponent
 import com.danielebottillo.tddandroid.model.Pokemon
-import com.danielebottillo.tddandroid.ui.presenters.PokemonPresenter
 import com.danielebottillo.tddandroid.ui.views.PokemonView
 import javax.inject.Inject
 

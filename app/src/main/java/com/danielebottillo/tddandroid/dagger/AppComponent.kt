@@ -1,6 +1,5 @@
 package com.danielebottillo.tddandroid.dagger
 
-import com.danielebottillo.tddandroid.interactors.PokemonInteractor
 import dagger.Component
 import org.greenrobot.eventbus.EventBus
 import javax.inject.Singleton
