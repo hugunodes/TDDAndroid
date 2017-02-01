@@ -6,6 +6,8 @@ import retrofit2.http.GET
 import retrofit2.http.Query
 
 interface PokemonService {
+
     @GET("api/v2/pokemon")
     fun listPokemon(@Query("offset") offset: String = "0"): Call<ListPokemonResponse>
+
 }
