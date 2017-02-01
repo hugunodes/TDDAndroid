@@ -17,34 +17,32 @@ class PokemonRestClientTest {
 
     @Rule @JvmField var mockitoRule = MockitoJUnit.rule()
 
-    lateinit var underTest: PokemonRestClient
+    lateinit var underTest : PokemonRestClient
 
-    @Mock
-    lateinit var service: PokemonService
+    @Mock lateinit var service: PokemonService
 
-    @Mock
-    lateinit var call: Call<ListPokemonResponse>
+    @Mock lateinit var callPokemonResponse : Call<ListPokemonResponse>
 
-    @Mock
-    lateinit var response: Response<ListPokemonResponse>
+    @Mock lateinit var pokemonResponse : Response<ListPokemonResponse>
 
-    @Mock
-    lateinit var pokemons: ListPokemonResponse
+    @Mock lateinit var pokemonList : ListPokemonResponse
 
     @Before
     fun setUp() {
-        Mockito.`when`(service.listPokemon()).thenReturn(call)
-        Mockito.`when`(call.execute()).thenReturn(response)
-        Mockito.`when`(response.body()).thenReturn(pokemons)
         underTest = PokemonRestClientImpl(service)
     }
 
     @Test
-    fun `shouldCallRetrofitClient_andReturnResponse`() {
+    fun shouldCallListPokemonService_andReturnsPokemonFromApi(){
+        Mockito.`when`(service.listPokemon()).thenReturn(callPokemonResponse)
+        Mockito.`when`(callPokemonResponse.execute()).thenReturn(pokemonResponse)
+        Mockito.`when`(pokemonResponse.body()).thenReturn(pokemonList)
+
         val result = underTest.listPokemon()
 
         verify(service).listPokemon()
-        assertEquals(pokemons, result)
+        assertEquals(pokemonList, result)
         verifyNoMoreInteractions(service)
     }
+
 }
